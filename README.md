@@ -23,7 +23,7 @@ https://visualsearch3831.netlify.app/
 
 ---
 
-## ▶To Run localy
+## ▶To Run locally
 
 ### Backend (Development)
 
