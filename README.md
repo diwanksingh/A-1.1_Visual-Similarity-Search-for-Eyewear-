@@ -25,7 +25,7 @@ https://visualsearch3831.netlify.app/
 
 ## 🏗 Architecture Diagram
 
-📐 [Click here to view system architecture](architectureDiagram.md)
+📐 [Click here to view system architecture](ArchitectureDiagram.png)
 
 ---
 
