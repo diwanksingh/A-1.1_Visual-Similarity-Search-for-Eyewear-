@@ -23,12 +23,6 @@ https://visualsearch3831.netlify.app/
 
 ---
 
-## 🎥 Demo Video
-
-<video src="demo.mp4" controls width="100%"></video>
-
----
-
 ## 🏗 Architecture Diagram
 
 📐 [Click here to view system architecture](ArchitectureDiagram.png)
