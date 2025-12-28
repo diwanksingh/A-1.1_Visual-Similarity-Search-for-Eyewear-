@@ -54,7 +54,7 @@ export default function Home() {
       localStorage.setItem("vg_last_results", JSON.stringify(data.results));
       localStorage.setItem("vg_last_tag", data.tag);
      } catch {
-       setError("Could not scan image. Try another one.");
+       setError("Blurry/Does don't have glasses in It.");
      } finally {
        setLoading(false);
     }
