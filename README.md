@@ -23,6 +23,12 @@ https://visualsearch3831.netlify.app/
 
 ---
 
+## 🏗 Architecture Diagram
+
+📐 [Click here to view system architecture](architectureDiagram.md)
+
+---
+
 ## ▶To Run locally
 
 ### Backend (Development)
