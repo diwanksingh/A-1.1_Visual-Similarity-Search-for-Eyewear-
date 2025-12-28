@@ -15,6 +15,13 @@ class VectorStore:
     - similarity search
     - rough style classification
     """
+    def is_eyewear(self, q, threshold=0.55):
+        q = q / np.linalg.norm(q, axis=1, keepdims=True)
+        D, _ = self.index.search(q, 1)
+        return float(D[0][0]) > threshold
+
+        # if even the BEST centroid similarity is weak → not glasses
+        return max(scores) > threshold
     def __init__(self):
         self.meta = self._load_meta()
         # Load cached index if available, otherwise build fresh

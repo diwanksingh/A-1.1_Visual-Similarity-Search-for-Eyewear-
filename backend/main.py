@@ -56,10 +56,15 @@ async def search(
         img = Image.open(file.file).convert("RGB")
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid image file")
-
     q = encode_image(img)
-    tag = tag_image(img)
 
+    if not store.is_eyewear(q):
+      raise HTTPException(
+        status_code=400,
+        detail="No eyewear detected. Please upload a glasses image."
+    )
+
+    tag = tag_image(img)
     raw = store.search(q, k=60)
     results = []
 
