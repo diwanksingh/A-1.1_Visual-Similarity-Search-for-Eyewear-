@@ -3,10 +3,10 @@ import os
 import faiss
 import numpy as np
 from collections import defaultdict
-
-META_FILE = "data/metadata.csv"
-INDEX_FILE = "index.faiss"
-CENTROID_FILE = "centroids.npy"
+BASE_DIR = os.path.dirname(__file__)
+META_FILE = os.path.join(BASE_DIR, "data/metadata.csv")
+INDEX_FILE = os.path.join(BASE_DIR, "index.faiss")
+CENTROID_FILE = os.path.join(BASE_DIR, "centroids.npy")
 # CLIP embedding dimension (fixed)
 DIM = 512
 class VectorStore:
@@ -15,18 +15,18 @@ class VectorStore:
     - similarity search
     - rough style classification
     """
-    def is_eyewear(self, q, threshold=0.55):
-        q = q / np.linalg.norm(q, axis=1, keepdims=True)
-        D, _ = self.index.search(q, 1)
-        return float(D[0][0]) > threshold
+    def is_eyewear(self, q, threshold=0.53):
+     q = q / np.linalg.norm(q, axis=1, keepdims=True)
 
-        # if even the BEST centroid similarity is weak → not glasses
-        return max(scores) > threshold
+     scores = [float(np.dot(q[0], c)) for c in self.centroids.values()]
+     return max(scores) > threshold
+
+
     def __init__(self):
         self.meta = self._load_meta()
-        # Load cached index if available, otherwise build fresh
+         # Load cached index if available, otherwise build fresh
         if os.path.exists(INDEX_FILE):
-            self.index = faiss.read_index(INDEX_FILE)
+             self.index = faiss.read_index(INDEX_FILE)
         else:
             self._build_index() 
         # Pre-compute normalized centroids for tagging
