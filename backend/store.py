@@ -15,7 +15,7 @@ class VectorStore:
     - similarity search
     - rough style classification
     """
-    def is_eyewear(self, q, threshold=0.55):
+    def is_eyewear(self, q, threshold=0.50):
         q = q / np.linalg.norm(q, axis=1, keepdims=True)
         D, _ = self.index.search(q, 1)
         return float(D[0][0]) > threshold
