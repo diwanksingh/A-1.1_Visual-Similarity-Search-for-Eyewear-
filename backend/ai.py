@@ -1,8 +1,7 @@
 import torch
 from transformers import CLIPModel, CLIPProcessor
 
-MODEL = "openai/clip-vit-base-patch32"
-
+MODEL = "patrickjohncyh/fashion-clip"
 # Choose device cpu or gpu prefer gpu if available
 def choose_device():
     return torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
